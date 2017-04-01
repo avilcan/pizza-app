@@ -1,6 +1,6 @@
-<div>
+<div ng-controller="registrationFormController">
 	<label>Ready for the challange? We need your name:</label>
-	<input name="user-name" ng-model="$ctrl.user"/>
-	<label>User name: {{ $ctrl.user }}</label>
-	<button>Go!</button>
+	<input name="user-name" ng-model="user"/>
+	<label>User name: {{ user }}</label>
+	<button ng-click="onRegistration()">Go!</button>
 </div>

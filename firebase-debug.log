@@ -1,0 +1,14 @@
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /home/alexandra/.nvm/versions/node/v5.0.0/bin/node /home/alexandra/.nvm/versions/node/v5.0.0/bin/firebase serve
+[debug] CLI Version:  3.5.0
+[debug] Platform:     linux
+[debug] Node Version: v5.0.0
+[debug] Time:         Sat Apr 01 2017 14:53:00 GMT+0300 (EEST)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[info] Starting Firebase development server...
+[info] 
+[info] Project Directory: /home/alexandra/Documents/work/pizza
+[info] Public Directory: dist
+[info] 
+[info] Server listening at: http://localhost:5000
