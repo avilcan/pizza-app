@@ -11,10 +11,10 @@ export default class RegistrationService {
   		usersInDb = snapshot.numChildren();
   	}).then(() => {
   		usersInDb = usersInDb + 1;
-		database.ref('users/' + usersInDb).set({
+		return database.ref('users/' + usersInDb).set({
 		  username,
 		  id: usersInDb
-		});
+		}).then(() => usersInDb);
   	});
   }
 }

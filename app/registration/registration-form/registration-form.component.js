@@ -1,9 +1,10 @@
-registrationFormCtrl.$inject = ['$scope','RegistrationService', '$state'];
+registrationFormCtrl.$inject = ['$rootScope', '$scope','RegistrationService', '$state'];
 
-function registrationFormCtrl($scope, service, state){
+function registrationFormCtrl($rootScope, $scope,  service, state){
 	$scope.user = "";
 	$scope.onRegistration = () => {
-		service.registerUser($scope.user).then(() => {
+		service.registerUser($scope.user).then((userId) => {
+			$rootScope.userId = userId;
 			state.go('game');
 		})
 	};

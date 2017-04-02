@@ -1,0 +1,8 @@
+<section ng-controller="puzzleGameController">
+	<h2>Time left: {{ timeLeft }} (seconds)</h2>
+	<label>Here are your letters:<label>
+	<div>{{ letters }}</div>
+	<input ng-model="solution" value="solution"/>
+	<button ng-click="onSubmitSolution()" ng-disabled="gameOver">Submit</button>
+	<label ng-show="gameOver">You finished the game with the score: {{ userScore }}</label>
+</section>
