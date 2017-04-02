@@ -1,49 +1,60 @@
 import shuffleLetters from '../../utils/utils'
-puzzleGameCtrl.$inject = ['$rootScope','$scope','GameService'];
+puzzleGameCtrl.$inject = ['$rootScope','$scope','GameService', '$state'];
 
 const GAME_TIME = 40; //40s
 
-function puzzleGameCtrl($rootScope, $scope, service){
-	this.fails = 0;
-	$scope.timeLeft = GAME_TIME;
-	$scope.userScore = 0;
-	
-	const interval = setInterval(() => {
+function updateWord($scope, service) {
+	return service.getRandomWord().then((word) => {
 		$scope.$apply(() => {
-			$scope.timeLeft = $scope.timeLeft - 1;
-			if ($scope.timeLeft <= 0){
-				clearInterval(interval);
-				const userScore = service.getFinalScore();
-				const userId = $rootScope.userId;
-
-				service.storeResults(userId)
-				
-				$scope.userScore = userScore;
-				$scope.gameOver = true;
-			}
-		});
-	}, 1000);
-	
-	service.getRandomWord().then((word) => {
-		$scope.$apply(() => {
+			$scope.solution = '';
 			$scope.word = word;
 			$scope.letters = shuffleLetters(word);
 		});
     });
+}
+
+function puzzleGameCtrl($rootScope, $scope, service, state){
 
 	$scope.onSubmitSolution = () => {
 		if ($scope.solution === $scope.word){
-			service.computeScoreForSolution(this.fails);
-			service.getRandomWord().then((word) => {
-				$scope.$apply(() => {
-					$scope.word = word;
-					$scope.letters = shuffleLetters(word);
-				});
-		    });
+			service.computeScoreForSolution($scope.fails);
+			updateWord($scope, service);
 		} else {
-			this.fails = this.fails + 1;
+			$scope.fails = $scope.fails + 1;
 		}
 	};
+
+	$scope.onViewLeaderboard = () => {
+		state.go('leaderboard');
+	}
+
+	$scope.playGame = () => {
+		$scope.fails = 0;
+		$scope.gameOver = false;
+	
+		$scope.timeLeft = GAME_TIME;
+		$scope.userScore = 0;
+
+		updateWord($scope, service).then(() => {
+			const interval = setInterval(() => {
+				$scope.$apply(() => {
+					$scope.timeLeft = $scope.timeLeft - 1;
+					if ($scope.timeLeft <= 0){
+						clearInterval(interval);
+						const userScore = service.getFinalScore();
+						const userId = $rootScope.userId;
+
+						service.storeResults(userId)
+						
+						$scope.userScore = userScore;
+						$scope.gameOver = true;
+					}
+				});
+			}, 1000);
+		});
+	}
+
+	$scope.playGame();
 }
 module.exports = {
 	template: require('./puzzle-component.template.html'),

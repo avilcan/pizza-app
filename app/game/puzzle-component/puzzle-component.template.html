@@ -4,5 +4,9 @@
 	<div>{{ letters }}</div>
 	<input ng-model="solution" value="solution"/>
 	<button ng-click="onSubmitSolution()" ng-disabled="gameOver">Submit</button>
-	<label ng-show="gameOver">You finished the game with the score: {{ userScore }}</label>
+	<div ng-show="gameOver">
+		<label >You finished the game with the score: {{ userScore }}</label>
+		<button ng-click="onViewLeaderboard()">View leaderboard</button>
+		<button ng-click="playGame()">Play again</button>
+	</div>
 </section>
