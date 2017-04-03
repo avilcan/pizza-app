@@ -1,6 +1,9 @@
 <div ng-controller="registrationFormController">
-	<label>Ready for the challange? We need your name:</label>
-	<input name="user-name" ng-model="user"/>
-	<label>User name: {{ user }}</label>
-	<button ng-click="onRegistration()">Go!</button>
+	<div class="page-header">Ready for the challange? We need your name:</div>
+	<form class="navbar-form navbar-left">
+	  <div class="form-group">
+	    <input type="text" class="form-control" ng-model="user" placeholder="Your name here...">
+	  </div>
+	  <button type="submit" ng-click="onRegistration()" class="btn btn-default">Submit</button>
+	</form>
 </div>

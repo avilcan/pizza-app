@@ -8,9 +8,8 @@ import GameService from './game.service';
 
 
 export default angular.module('pizzaApp.game', [uirouter])
-  .config(routes)
-  .controller('puzzleGameController', puzzleComponent.controller)
-  .component('puzzleGameComponent', puzzleComponent)
-  .service('GameService', GameService)
-  .name;
-  
+    .config(routes)
+    .controller('puzzleGameController', puzzleComponent.controller)
+    .component('puzzleGameComponent', puzzleComponent)
+    .service('GameService', GameService)
+    .name;

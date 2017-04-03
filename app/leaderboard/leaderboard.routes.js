@@ -2,16 +2,16 @@ routes.$inject = ['$stateProvider'];
 leaderboardPageCtrl.$inject = ['$scope', '$state'];
 
 function leaderboardPageCtrl($scope, state) {
-   $scope.onPlayAgain = () => {
-     state.go("game");
-   }
+    $scope.onPlayAgain = () => {
+        state.go("game");
+    }
 }
 
 export default function routes($stateProvider) {
-  $stateProvider
-  .state('leaderboard', {
-    url: '/leaderboard',
-    template: require('./leaderboard.html'),
-    controller: leaderboardPageCtrl,
-  });
+    $stateProvider
+        .state('leaderboard', {
+            url: '/leaderboard',
+            template: require('./leaderboard.html'),
+            controller: leaderboardPageCtrl,
+        });
 }
