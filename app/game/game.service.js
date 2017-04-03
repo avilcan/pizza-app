@@ -1,7 +1,7 @@
 import database from '../app.service';
 
 export default class GameService {
-    constructor($http) {
+    constructor() {
         this.maxScore = 0;
         this.userScore = 0;
     }

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently 'lite-server' 'webpack --watch'"
+    "start": "concurrently 'lite-server' 'webpack --watch'",
+    "build": "concurrently 'lite-server' 'webpack -p --watch'"
   },
   "author": "",
   "license": "ISC",
