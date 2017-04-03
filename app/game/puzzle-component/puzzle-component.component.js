@@ -28,12 +28,19 @@ function puzzleGameCtrl($rootScope, $scope, service, state) {
         state.go('leaderboard');
     }
 
+    $scope.onRegister = () => {
+    	state.go('registration');
+    }
+
     $scope.playGame = () => {
         $scope.fails = 0;
         $scope.gameOver = false;
 
         $scope.timeLeft = GAME_TIME;
         $scope.userScore = 0;
+        if (!$rootScope.userId) {
+        	$scope.unregisteredUser = true;
+        }
 
         updateWord($scope, service).then(() => {
             const interval = setInterval(() => {

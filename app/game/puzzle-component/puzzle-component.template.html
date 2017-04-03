@@ -1,24 +1,30 @@
 <section ng-controller="puzzleGameController">
-	<div class="page-header">
-		<div>
-			<span class="glyphicon glyphicon-time"></span>
-			<label>Time left: {{ timeLeft }} (seconds)</label>
-		</div>
-		<div>Here are your letters:</div>
-		<label>{{ letters }}</label>
+	<div ng-show="unregisteredUser">
+		<div class="alert alert-warning" role="alert">Hey!You should register first</div>
+		<button ng-click="onRegister()" class="btn btn-default">Register</button>
 	</div>
-	<form class="navbar-form navbar-left">
-	  <div class="form-group">
-	    <input type="text" ng-model="solution" value="solution" class="form-control" ng-model="user">
-	  </div>
-	  <button type="submit" ng-click="onSubmitSolution()" ng-disabled="gameOver" class="btn btn-default">	Submit
-	  </button>
-	  <div ng-show="gameOver">
-		<label>You finished the game with the score: {{ userScore }}</label>
-		<div>
-			<button ng-click="onViewLeaderboard()" class="btn btn-default">View leaderboard</button>
-			<button ng-click="playGame()" class="btn btn-default">Play again</button>
+	<div ng-hide="unregisteredUser">
+		<div class="page-header">
+			<div>
+				<span class="glyphicon glyphicon-time"></span>
+				<label>Time left: {{ timeLeft }} (seconds)</label>
+			</div>
+			<div>Here are your letters:</div>
+			<label>{{ letters }}</label>
 		</div>
-	  </div>
-	</form>
+		<form class="navbar-form navbar-left">
+		  <div class="form-group">
+		    <input type="text" ng-model="solution" value="solution" class="form-control" ng-model="user">
+		  </div>
+		  <button type="submit" ng-click="onSubmitSolution()" ng-disabled="gameOver" class="btn btn-default">	Submit
+		  </button>
+		  <div ng-show="gameOver">
+			<label>You finished the game with the score: {{ userScore }}</label>
+			<div>
+				<button ng-click="onViewLeaderboard()" class="btn btn-default">View leaderboard</button>
+				<button ng-click="playGame()" class="btn btn-default">Play again</button>
+			</div>
+		  </div>
+		</form>
+	</div>
 </section>
