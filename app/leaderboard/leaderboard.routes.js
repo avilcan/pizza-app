@@ -6,7 +6,7 @@ function leaderboardPageCtrl($scope, state) {
         state.go("game");
     }
 }
-
+//update
 export default function routes($stateProvider) {
     $stateProvider
         .state('leaderboard', {
