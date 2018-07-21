@@ -5,7 +5,7 @@ import routes from './leaderboard.routes.js';
 import leaderboardComponent from './leaderboard-component/leaderboard-component.component';
 import LeaderboardService from './leaderboard.service';
 
-//update 2
+//update 3
 
 export default angular.module('pizzaApp.leaderboard', [uirouter])
     .config(routes)
